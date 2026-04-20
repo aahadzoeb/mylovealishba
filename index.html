@@ -3,248 +3,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alishba | My Infinite Love</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;1,700&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>Alishba | My Forever</title>
+    
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;1,700&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --black: #050505;
-            --pink-black: #1a0b10;
-            --electric-pink: #ff0055;
-            --soft-pink: #ff75a0;
-            --glass: rgba(255, 255, 255, 0.05);
-            --text-main: #f0f0f0;
+            --bg-deep: #0a0506;
+            --pink-accent: #ff2d75;
+            --pink-glow: #fb3b8d;
+            --glass: rgba(255, 255, 255, 0.03);
+            --text-color: #fdf2f5;
         }
 
-        /* --- Advanced Custom Scrollbar --- */
+        /* --- ADVANCED PINK SCROLLBAR --- */
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--black);
+            background: var(--bg-deep);
         }
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(var(--black), var(--electric-pink), var(--black));
+            background: linear-gradient(180deg, var(--bg-deep), var(--pink-accent), var(--bg-deep));
             border-radius: 10px;
-            border: 2px solid var(--black);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
+        /* --- TOP PROGRESS BAR (MOBILE & DESKTOP) --- */
+        #progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            z-index: 1000;
+        }
+        #progress-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--pink-accent);
+            box-shadow: 0 0 15px var(--pink-glow);
         }
 
-        html {
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-deep);
+            background: radial-gradient(circle at 50% 50%, #1a0b10 0%, var(--bg-deep) 100%);
+            color: var(--text-color);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        body {
-            background-color: var(--black);
-            background: radial-gradient(circle at top right, var(--pink-black) 0%, var(--black) 100%);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* --- Background Animation --- */
-        #canvas {
+        /* --- Particle Canvas --- */
+        #particle-canvas {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: 0;
-            opacity: 0.6;
+            pointer-events: none;
         }
 
-        /* --- Responsive Layout Containers --- */
         section {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 40px 20px;
             position: relative;
             z-index: 1;
         }
 
-        /* --- Hero Section --- */
-        .hero-title {
+        /* --- Hero --- */
+        .hero h1 {
             font-family: 'Dancing Script', cursive;
-            font-size: clamp(3.5rem, 15vw, 9rem);
-            color: #fff;
-            text-shadow: 0 0 20px var(--electric-pink), 0 0 40px var(--electric-pink);
+            font-size: clamp(4rem, 15vw, 9rem);
+            color: white;
+            text-shadow: 0 0 20px var(--pink-accent), 0 0 40px var(--pink-glow);
             margin-bottom: 10px;
             text-align: center;
         }
 
-        .hero-subtitle {
-            font-size: clamp(0.8rem, 3vw, 1.2rem);
+        .hero p {
+            letter-spacing: 6px;
+            font-weight: 200;
             text-transform: uppercase;
-            letter-spacing: 0.5rem;
-            color: var(--soft-pink);
-            font-weight: 300;
-            text-align: center;
+            font-size: clamp(0.7rem, 2.5vw, 1rem);
+            color: var(--pink-glow);
         }
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            animation: bounce 2s infinite;
-            font-size: 1.5rem;
-            color: var(--electric-pink);
-        }
-
-        /* --- Romantic Content Card --- */
-        .glass-container {
+        /* --- Content Card --- */
+        .glass-card {
+            max-width: 750px;
             width: 100%;
-            max-width: 800px;
-            padding: clamp(30px, 8vw, 60px);
+            padding: clamp(30px, 10vw, 60px);
             background: var(--glass);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+            border: 1px solid rgba(255, 45, 117, 0.2);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
             text-align: center;
-            margin: 40px 0;
         }
 
-        .romantic-para {
+        .romantic-text {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(1.1rem, 4vw, 1.6rem);
+            font-size: clamp(1.1rem, 4.5vw, 1.6rem);
+            line-height: 1.9;
             font-style: italic;
-            color: #ececec;
-            margin-bottom: 30px;
+            color: #fff1f5;
         }
 
-        .highlight {
-            color: var(--electric-pink);
-            font-weight: bold;
+        .divider {
+            height: 1px;
+            width: 100px;
+            background: linear-gradient(90deg, transparent, var(--pink-accent), transparent);
+            margin: 35px auto;
         }
 
-        /* --- Interactive Elements --- */
-        .btn-fancy {
+        /* --- Interactive Button --- */
+        .btn-love {
+            margin-top: 20px;
+            padding: 18px 40px;
             background: transparent;
             color: white;
-            border: 2px solid var(--electric-pink);
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            border: 1px solid var(--pink-accent);
+            border-radius: 100px;
             cursor: pointer;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
         }
 
-        .btn-fancy:hover {
-            background: var(--electric-pink);
-            box-shadow: 0 0 30px var(--electric-pink);
-            transform: translateY(-5px);
+        .btn-love:hover {
+            background: var(--pink-accent);
+            box-shadow: 0 0 40px var(--pink-glow);
+            transform: scale(1.05) translateY(-5px);
         }
 
-        .reveal-msg {
+        #reveal-msg {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            color: var(--soft-pink);
+            transition: all 1s ease;
+            margin-top: 25px;
             font-size: 1.2rem;
-            margin-top: 20px;
+            color: var(--pink-glow);
+            font-weight: 200;
         }
 
-        /* --- Mobile Optimizations --- */
+        /* --- Footer --- */
+        footer {
+            padding: 60px 20px;
+            text-align: center;
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            opacity: 0.6;
+            color: var(--pink-glow);
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
         @media (max-width: 600px) {
-            .glass-container {
-                width: 95%;
-                border-radius: 30px;
-            }
-            .hero-subtitle { letter-spacing: 0.2rem; }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
+            .glass-card { padding: 35px 25px; border-radius: 30px; }
         }
     </style>
 </head>
 <body>
 
-    <canvas id="canvas"></canvas>
+    <div id="progress-container"><div id="progress-bar"></div></div>
+    <canvas id="particle-canvas"></canvas>
 
-    <!-- Section 1: Hero -->
-    <section>
-        <h1 class="hero-title">Alishba</h1>
-        <p class="hero-subtitle">You are my universe</p>
-        <div class="scroll-indicator">↓</div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Alishba</h1>
+        <p>My Wife • My Universe</p>
+        <div style="margin-top: 40px; opacity: 0.4; font-size: 0.7rem; letter-spacing: 2px;">SCROLL FOR A MESSAGE</div>
     </section>
 
-    <!-- Section 2: The Heart of the Site -->
+    <!-- Romantic Message Section -->
     <section>
-        <div class="glass-container">
-            <p class="romantic-para">
-                "Alishba, you are the rhythm in my quietest moments and the <span class="highlight">light</span> in my darkest hours. In a world that never stops moving, you are my favorite place to stand still."
+        <div class="glass-card">
+            <p class="romantic-text">
+                "Alishba, being your husband is the greatest honor I have ever known. In the quiet rhythm of our lives, your love is the melody that brings me peace."
             </p>
-            <p class="romantic-para">
-                "My love for you is as deep as the midnight sky and as constant as the stars that guide us home."
+            <div class="divider"></div>
+            <p class="romantic-text" style="font-size: clamp(1rem, 4vw, 1.3rem);">
+                "As we walk through 2026 and every year beyond, I promise to be your anchor and your forever home."
             </p>
             
-            <button class="btn-fancy" onclick="reveal()">Click for a Promise</button>
-            <div id="msg" class="reveal-msg">
-                I will love you until the stars go cold. ❤️
+            <button class="btn-love" onclick="showLove()">Our Promise</button>
+            <div id="reveal-msg">
+                <p>Always Yours, Ahad. ❤️</p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer style="padding: 20px; text-align: center; opacity: 0.4; font-size: 0.7rem; letter-spacing: 2px;">
-        DESIGNED FOR ALISHBA BY HER HUSBAND AHAD | 2026
+    <!-- Personalized Footer -->
+    <footer>
+        Designed for Alishba by her husband Ahad | 2026
     </footer>
 
     <script>
-        // --- Advanced Fluid Background Particles ---
-        const canvas = document.getElementById('canvas');
+        // Progress Bar
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+        };
+
+        // Particle System
+        const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
 
-        function initCanvas() {
+        function resize() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
+        window.addEventListener('resize', resize);
+        resize();
 
         class Particle {
             constructor() {
+                this.reset();
+            }
+            reset() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 1;
-                this.speedY = Math.random() * 0.4 + 0.1;
-                this.opacity = Math.random() * 0.5 + 0.1;
+                this.size = Math.random() * 2 + 0.1;
+                this.speed = Math.random() * 0.4 + 0.1;
+                this.opacity = Math.random() * 0.6;
             }
             update() {
-                this.y -= this.speedY;
-                if (this.y < 0) {
-                    this.y = canvas.height;
-                    this.x = Math.random() * canvas.width;
-                }
+                this.y -= this.speed;
+                if (this.y < 0) this.reset();
             }
             draw() {
-                ctx.fillStyle = `rgba(255, 0, 85, ${this.opacity})`;
+                ctx.fillStyle = `rgba(255, 45, 117, ${this.opacity})`;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
             }
         }
 
-        function createParticles() {
-            for (let i = 0; i < 80; i++) {
-                particles.push(new Particle());
-            }
+        function init() {
+            for (let i = 0; i < 120; i++) particles.push(new Particle());
         }
 
         function animate() {
@@ -256,14 +264,13 @@
             requestAnimationFrame(animate);
         }
 
-        function reveal() {
-            const m = document.getElementById('msg');
-            m.style.maxHeight = "100px";
+        function showLove() {
+            const msg = document.getElementById('reveal-msg');
+            msg.style.maxHeight = "150px";
+            msg.style.opacity = "1";
         }
 
-        window.addEventListener('resize', initCanvas);
-        initCanvas();
-        createParticles();
+        init();
         animate();
     </script>
 </body>
