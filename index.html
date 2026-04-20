@@ -3,218 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Dearest Alishba</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <title>Alishba | My Universe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;1,700&family=Outfit:wght@300;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-rose: #d63447;
-            --soft-pink: #fde2e4;
-            --gold: #d4af37;
-            --dark-text: #2d3436;
-            --glass: rgba(255, 255, 255, 0.15);
+            /* Pinkish-Black Color Palette */
+            --bg-dark: #0a0a0c;
+            --deep-rose: #2d141a;
+            --neon-pink: #ff2d75;
+            --soft-glow: rgba(255, 45, 117, 0.3);
+            --text-silver: #e0e0e0;
+            --glass: rgba(255, 255, 255, 0.03);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
-            color: var(--dark-text);
+            background-color: var(--bg-dark);
+            background: radial-gradient(circle at center, var(--deep-rose) 0%, var(--bg-dark) 100%);
+            color: var(--text-silver);
+            font-family: 'Outfit', sans-serif;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        /* --- Floating Hearts Background --- */
-        #bg-animation {
+        /* --- Advanced Background Particles --- */
+        #particle-canvas {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
+            z-index: 0;
             pointer-events: none;
-        }
-
-        .heart {
-            position: absolute;
-            color: var(--primary-rose);
-            opacity: 0.3;
-            animation: float 6s linear infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            50% { opacity: 0.6; }
-            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
         }
 
         /* --- Hero Section --- */
         .hero {
             height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            background: url('https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
+            flex-direction: column;
             position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-        }
-
-        .hero-content {
             z-index: 1;
-            color: white;
-            animation: fadeIn 2s ease-in;
         }
 
-        .hero h1 {
+        .neon-title {
             font-family: 'Dancing Script', cursive;
-            font-size: 5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            font-size: clamp(4rem, 10vw, 8rem);
+            color: #fff;
+            text-shadow: 
+                0 0 10px var(--neon-pink),
+                0 0 20px var(--neon-pink),
+                0 0 40px var(--neon-pink);
+            animation: breathe 3s ease-in-out infinite alternate;
         }
 
-        .hero p {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        @keyframes breathe {
+            from { opacity: 0.8; transform: scale(1); }
+            to { opacity: 1; transform: scale(1.02); text-shadow: 0 0 20px var(--neon-pink), 0 0 60px var(--neon-pink); }
         }
 
-        /* --- Main Content Section --- */
-        .container {
-            max-width: 900px;
-            margin: -100px auto 50px;
-            padding: 40px;
+        /* --- Glassmorphic Content Card --- */
+        .content-wrapper {
+            padding: 100px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .glass-card {
+            max-width: 800px;
+            padding: 50px;
             background: var(--glass);
-            backdrop-filter: blur(15px);
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 45, 117, 0.2);
+            border-radius: 40px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            text-align: center;
             position: relative;
-            z-index: 2;
         }
 
-        .romantic-para {
+        .romantic-text {
             font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
-            line-height: 1.8;
-            text-align: center;
+            font-size: 1.4rem;
+            line-height: 2;
             font-style: italic;
-            color: #444;
-            margin-bottom: 40px;
+            color: #ffdae4;
         }
 
         .divider {
-            width: 80px;
-            height: 2px;
-            background: var(--gold);
-            margin: 20px auto;
+            height: 1px;
+            width: 100px;
+            background: linear-gradient(90deg, transparent, var(--neon-pink), transparent);
+            margin: 30px auto;
         }
 
-        /* --- Interactive Section --- */
-        .interactive-section {
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .btn-love {
-            padding: 15px 35px;
-            background: var(--primary-rose);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 10px 20px rgba(214, 52, 71, 0.3);
-        }
-
-        .btn-love:hover {
-            transform: scale(1.05);
-            background: #b52a3a;
-        }
-
-        #surprise-msg {
+        /* --- Interactive Button --- */
+        .btn-glow {
             margin-top: 30px;
+            padding: 18px 40px;
+            background: transparent;
+            color: var(--neon-pink);
+            border: 2px solid var(--neon-pink);
+            border-radius: 100px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.5s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-glow:hover {
+            background: var(--neon-pink);
+            color: #fff;
+            box-shadow: 0 0 30px var(--neon-pink);
+        }
+
+        #hidden-message {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 1s ease-out;
+            margin-top: 20px;
+            color: var(--neon-pink);
             font-weight: 300;
-            display: none;
-            animation: slideUp 0.8s ease-out;
         }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Mobile Responsive */
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 3rem; }
-            .container { margin: -50px 20px 50px; padding: 25px; }
-            .hero p { font-size: 1rem; }
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            letter-spacing: 3px;
         }
+
     </style>
 </head>
 <body>
 
-    <div id="bg-animation"></div>
+    <canvas id="particle-canvas"></canvas>
 
     <section class="hero">
-        <div class="hero-content">
-            <h1>Alishba</h1>
-            <p>The Beat of My Heart</p>
-        </div>
+        <h1 class="neon-title">Alishba</h1>
+        <p style="letter-spacing: 5px; font-weight: 300;">FOREVER & ALWAYS</p>
     </section>
 
-    <div class="container">
-        <div class="romantic-para">
-            "Alishba, they say your name means ‘pretty’ and ‘beautiful,’ but to me, it represents a world that words can barely capture. You are the grace in my wildest days and the quiet joy in my happiest moments."
-            <div class="divider"></div>
-            "Every second with you feels like a masterpiece in the making, a blend of laughter, warmth, and a love that grows deeper with every heartbeat. This space is just a small tribute to the incredible woman you are."
-        </div>
+    <div class="content-wrapper">
+        <div class="glass-card">
+            <div class="romantic-text">
+                "Alishba, you are the starlight that pierces through my darkest nights. In a world of fleeting moments, you are my permanent peace."
+                <div class="divider"></div>
+                "Your name carries the weight of all things beautiful, but your heart holds a kindness that is rarer than gold. This space is a digital reflection of the love I carry for you—mysterious, deep, and ever-glowing."
+            </div>
 
-        <div class="interactive-section">
-            <button class="btn-love" onclick="revealSurprise()">A Message For You</button>
-            <div id="surprise-msg">
-                <h3 style="font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: var(--primary-rose);">I Love You Always</h3>
-                <p>You make my world brighter just by being in it. ❤️</p>
+            <button class="btn-glow" onclick="toggleMessage()">See My Promise</button>
+            <div id="hidden-message">
+                <p style="font-size: 1.5rem; margin-top: 20px;">I will choose you, every single day, without a doubt. ❤️</p>
             </div>
         </div>
     </div>
 
+    <footer>MADE WITH LOVE FOR ALISHBA</footer>
+
     <script>
-        // Create Floating Hearts
-        function createHearts() {
-            const container = document.getElementById('bg-animation');
-            const heartIcons = ['❤️', '💖', '💗', '💕'];
-            
-            setInterval(() => {
-                const heart = document.createElement('div');
-                heart.classList.add('heart');
-                heart.innerHTML = heartIcons[Math.floor(Math.random() * heartIcons.length)];
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
-                
-                container.appendChild(heart);
-                
-                setTimeout(() => {
-                    heart.remove();
-                }, 6000);
-            }, 500);
+        // Particle System for Pink Glow
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         }
 
-        function revealSurprise() {
-            const msg = document.getElementById('surprise-msg');
-            msg.style.display = 'block';
-            window.scrollTo({
-                top: document.body.scrollHeight,
-                behavior: 'smooth'
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.opacity = Math.random() * 0.5;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width || this.x < 0 || this.y > canvas.height || this.y < 0) this.reset();
+            }
+            draw() {
+                ctx.fillStyle = `rgba(255, 45, 117, ${this.opacity})`;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = '#ff2d75';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < 100; i++) particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
             });
+            requestAnimationFrame(animate);
         }
 
-        window.onload = createHearts;
+        function toggleMessage() {
+            const msg = document.getElementById('hidden-message');
+            msg.style.maxHeight = msg.style.maxHeight === '200px' ? '0' : '200px';
+        }
+
+        init();
+        animate();
     </script>
 </body>
 </html>
-
