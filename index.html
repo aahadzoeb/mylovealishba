@@ -1,1 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Dearest Alishba</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-rose: #d63447;
+            --soft-pink: #fde2e4;
+            --gold: #d4af37;
+            --dark-text: #2d3436;
+            --glass: rgba(255, 255, 255, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            color: var(--dark-text);
+            overflow-x: hidden;
+        }
+
+        /* --- Floating Hearts Background --- */
+        #bg-animation {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            color: var(--primary-rose);
+            opacity: 0.3;
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            50% { opacity: 0.6; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            z-index: 1;
+            color: white;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- Main Content Section --- */
+        .container {
+            max-width: 900px;
+            margin: -100px auto 50px;
+            padding: 40px;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .romantic-para {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            line-height: 1.8;
+            text-align: center;
+            font-style: italic;
+            color: #444;
+            margin-bottom: 40px;
+        }
+
+        .divider {
+            width: 80px;
+            height: 2px;
+            background: var(--gold);
+            margin: 20px auto;
+        }
+
+        /* --- Interactive Section --- */
+        .interactive-section {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .btn-love {
+            padding: 15px 35px;
+            background: var(--primary-rose);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(214, 52, 71, 0.3);
+        }
+
+        .btn-love:hover {
+            transform: scale(1.05);
+            background: #b52a3a;
+        }
+
+        #surprise-msg {
+            margin-top: 30px;
+            font-weight: 300;
+            display: none;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 3rem; }
+            .container { margin: -50px 20px 50px; padding: 25px; }
+            .hero p { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="bg-animation"></div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Alishba</h1>
+            <p>The Beat of My Heart</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="romantic-para">
+            "Alishba, they say your name means ‘pretty’ and ‘beautiful,’ but to me, it represents a world that words can barely capture. You are the grace in my wildest days and the quiet joy in my happiest moments."
+            <div class="divider"></div>
+            "Every second with you feels like a masterpiece in the making, a blend of laughter, warmth, and a love that grows deeper with every heartbeat. This space is just a small tribute to the incredible woman you are."
+        </div>
+
+        <div class="interactive-section">
+            <button class="btn-love" onclick="revealSurprise()">A Message For You</button>
+            <div id="surprise-msg">
+                <h3 style="font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: var(--primary-rose);">I Love You Always</h3>
+                <p>You make my world brighter just by being in it. ❤️</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create Floating Hearts
+        function createHearts() {
+            const container = document.getElementById('bg-animation');
+            const heartIcons = ['❤️', '💖', '💗', '💕'];
+            
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                
+                container.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 6000);
+            }, 500);
+        }
+
+        function revealSurprise() {
+            const msg = document.getElementById('surprise-msg');
+            msg.style.display = 'block';
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
+
+        window.onload = createHearts;
+    </script>
+</body>
+</html>
 
